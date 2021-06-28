@@ -9,6 +9,10 @@ import './i18n/config'
 import { Provider } from 'react-redux'
 import store from './redux/store'
 
+import axios from 'axios'
+
+axios.defaults.headers["x-icode"] = "qKhDxI15yz";
+
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
@@ -17,5 +21,3 @@ ReactDOM.render(
   </React.StrictMode>,
   document.getElementById('root')
 );
-
-// axios.defaults.headers["x-icode"] = "qKhDxI15yz";
