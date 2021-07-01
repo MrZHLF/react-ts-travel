@@ -20,7 +20,7 @@ import { withTranslation,WithTranslation } from 'react-i18next'
 import { connect } from 'react-redux'
 import { RootState } from '../../redux/store'
 import { giveMeDataActionCreator } from "../../redux/recommendProducts/recommendProductsActions";
-
+import { MainLayout } from '../../layouts/mainLayout'
 
 const mapStateToProps = (state: RootState) => {
   return {
@@ -69,9 +69,7 @@ class HomePageComponents extends React.Component<PropsType> {
 
     return (
       <>
-        <Header />
-        {/* 页面内容 content */}
-        <div className={styles["page-content"]}>
+        <MainLayout>
           <Row style={{ marginTop: 20 }}>
             <Col span={6}>
               <SideMenu />
@@ -108,8 +106,7 @@ class HomePageComponents extends React.Component<PropsType> {
             products={productList[2].touristRoutes}
           />
           <BusinessPartners />
-        </div>
-        <Footer />
+          </MainLayout>
       </>
     );
   }
