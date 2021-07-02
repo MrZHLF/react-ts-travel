@@ -7,15 +7,19 @@ import  { actionLog } from './middlewares/actionLog'
 
 import { productDetailSlice } from './productDetail/slice'
 import { userSlice } from './user/slice'
+import { shoppingCartSlice } from './shoppingCart/slice'
+import { orderSlice } from './order/slice'
 import { combineReducers,configureStore } from "@reduxjs/toolkit";
 
 
 import { persistStore, persistReducer } from "redux-persist";
 import storage from "redux-persist/lib/storage";
+
 const persistConfig = {
     key: "root",
     storage,
-    whitelist: ["user"]
+    whitelist: ["user"], //需要缓存的数据
+    blacklist: ["language","recommendProducts","productDetail"] //不需要缓存的数据
 }
 
 
@@ -24,7 +28,9 @@ const rootReducer =  combineReducers({
     language:  languageReducer,
     recommendProducts: recommendProductsReducer,
     productDetail:productDetailSlice.reducer,
-    user: userSlice.reducer
+    user: userSlice.reducer,
+    shoppingCart: shoppingCartSlice.reducer,
+    order:orderSlice.reducer
 })
 const persistedReducer = persistReducer(persistConfig, rootReducer)
 
